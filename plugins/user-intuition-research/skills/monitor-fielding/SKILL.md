@@ -6,7 +6,8 @@ description: Use when the user wants a status snapshot of studies currently coll
 When the user asks how studies are doing:
 
 1. **Call `list_studies`** (paginate if needed — default page size is 10).
-2. **Count with `total_count`, never by page — and count completed calls only.** `list_calls` defaults to 5 rows per page, and its unfiltered `total_count` includes in-progress and failed sessions. For each active study call `list_calls` with the `assistant_id`, `status: "completed"`, and `page_size: 1` and read the envelope's `total_count`; for the quality split, repeat with `status: "completed"` plus `success_evaluation: ["Excellent", "Good"]` and compare the two totals.
+2. **Count with `total_count`, never by page — and count completed calls only.** `list_calls` defaults to 5 rows per page, and its unfiltered `total_count` includes in-progress and failed sessions. For each active study call `list_calls` with the `assistant_id`, `status: "completed"`, and `page_size: 1` and read the envelope's `total_count` for the progress number.
+   For the **quality split**, never use that unfiltered total as the denominator — the default listing excludes Poor panel calls, so it undercounts. Query each label explicitly (`status: "completed"`, `success_evaluation: ["<label>"]`, `page_size: 1`) for all four labels and compute shares from those four `total_count`s. (Equivalently, the filtered response's `unfiltered_total_count` is a valid denominator.)
 3. **Render a compact table:** study name, mode, total interviews vs `target_n` (if set), share of Excellent/Good interviews, and time remaining if `time_budget_hours` is set.
 4. **Flag what needs attention:**
    - Studies with few or no completions long after launch (recruitment stalled — screeners may be too tight).
