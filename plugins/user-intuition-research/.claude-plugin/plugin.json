@@ -1,0 +1,20 @@
+{
+  "name": "user-intuition-research",
+  "version": "1.0.0",
+  "description": "Run customer research with AI agents: create interview studies, design screeners, field panels, analyze transcripts. Requires the User Intuition MCP server.",
+  "author": {
+    "name": "User Intuition",
+    "email": "support@userintuition.ai",
+    "url": "https://www.userintuition.ai"
+  },
+  "homepage": "https://docs.userintuition.ai/skills/overview",
+  "repository": "https://github.com/userintuition/skills",
+  "license": "MIT",
+  "keywords": [
+    "user-research",
+    "customer-interviews",
+    "panel-research",
+    "concept-testing",
+    "mcp"
+  ]
+}

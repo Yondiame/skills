@@ -1,0 +1,31 @@
+{
+  "name": "user-intuition",
+  "metadata": {
+    "description": "Skills for running customer research with AI agents on User Intuition — interview studies, screeners, panel recruiting, and transcript analysis."
+  },
+  "owner": {
+    "name": "User Intuition",
+    "email": "support@userintuition.ai",
+    "url": "https://www.userintuition.ai"
+  },
+  "plugins": [
+    {
+      "name": "user-intuition-research",
+      "source": "./plugins/user-intuition-research",
+      "description": "Run customer research with AI agents: create interview studies, design screeners, field panels, analyze transcripts. Requires the User Intuition MCP server.",
+      "author": {
+        "name": "User Intuition",
+        "url": "https://www.userintuition.ai"
+      },
+      "homepage": "https://docs.userintuition.ai/skills/overview",
+      "license": "MIT",
+      "keywords": [
+        "user-research",
+        "customer-interviews",
+        "panel-research",
+        "concept-testing",
+        "mcp"
+      ]
+    }
+  ]
+}
