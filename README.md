@@ -9,15 +9,15 @@ Where the [User Intuition MCP server](https://docs.userintuition.ai/mcp-server/o
 ### Claude Code (plugin marketplace)
 
 ```
-/plugin marketplace add userintuition/skills
+/plugin marketplace add user-intuition/skills
 /plugin install user-intuition-research@user-intuition
 ```
 
 ### Any agent (raw files)
 
-Each skill is a standalone Markdown file under `plugins/user-intuition-research/skills/<name>/SKILL.md`. Copy any of them into your agent's skills directory (`~/.claude/skills/` for Claude Code), or tell your agent:
+Each skill is a standalone Markdown file under `plugins/user-intuition-research/skills/<name>/SKILL.md`. Claude Code discovers skills as one directory per skill — copy any of them to `~/.claude/skills/<name>/SKILL.md` — or tell your agent:
 
-> Fetch https://docs.userintuition.ai/skills/library.md and install the skills into `~/.claude/skills/`
+> Fetch https://docs.userintuition.ai/skills/library.md and install each skill as `~/.claude/skills/<name>/SKILL.md` — one directory per skill
 
 ## Prerequisites
 
