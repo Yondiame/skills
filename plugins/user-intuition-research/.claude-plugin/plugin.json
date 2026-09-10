@@ -1,6 +1,6 @@
 {
   "name": "user-intuition-research",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Run customer research with AI agents: create interview studies, design screeners, field panels, analyze transcripts. Requires the User Intuition MCP server.",
   "author": {
     "name": "User Intuition",

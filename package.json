@@ -1,0 +1,8 @@
+{
+  "name": "user-intuition-skills",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/check-skills.mjs"
+  }
+}

@@ -21,10 +21,16 @@ Each skill is a standalone Markdown file under `plugins/user-intuition-research/
 
 ## Prerequisites
 
-The skills drive the User Intuition MCP server — connect it first ([quickstart](https://docs.userintuition.ai/mcp-server/quickstart)):
+The skills drive the User Intuition MCP server — connect it first ([quickstart](https://docs.userintuition.ai/mcp-server/quickstart)). OAuth-capable clients should use the hosted endpoint:
+
+```text
+https://mcp.userintuition.ai/mcp
+```
+
+For local stdio clients such as Claude Code, use:
 
 ```bash
-claude mcp add userintuition -- npx -y @userintuition-ai/mcp
+claude mcp add userintuition -- npx -y @userintuition-ai/mcp@latest
 ```
 
 with `USERINTUITION_API_KEY` set (get a key from your [dashboard](https://app.userintuition.ai)).
@@ -40,9 +46,9 @@ with `USERINTUITION_API_KEY` set (get a key from your [dashboard](https://app.us
 | `run-a-concept-test` | Put a concept, prototype, or landing page in front of participants |
 | `monitor-fielding` | Daily digest of every fielding study — progress, quality, stalls |
 | `analyze-completed-study` | From transcripts to stakeholder-ready findings, with real quotes only |
-| `curate-interview-quality` | Keep low-quality interviews out of your analysis — reversibly |
+| `curate-interview-quality` | Review low-quality interviews and delete only the exact interviews the user confirms |
 
-Every tool name and argument is verified against the published `@userintuition-ai/mcp` package. Check any tool yourself:
+The plugin workflows target the 33-tool `@userintuition-ai/mcp` v0.8.6 surface. Check any tool yourself:
 
 ```bash
 npx -y @userintuition-ai/mcp describe create_study

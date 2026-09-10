@@ -1,12 +1,15 @@
 ---
 name: invite-your-own-participants
-description: Use when the user wants to interview their own customers, users, or contacts in a BYOP study. Triggers on "invite my customers", "send interview invites", "add these people to the study", "reward that participant".
+description: Use when the user wants to add, invite, update, or reward their own participants in a BYOP study.
 ---
 
-When the user wants to invite their own participants:
+When the user supplies participants:
 
-1. **Confirm the study is BYOP** (`is_panel=false`) via `get_study`. Panel studies recruit from the panel instead.
-2. **For each participant, call `create_invite`** with `assistant_id`, `email`, and `name`. By default this SENDS the invitation email immediately — if the user wants to send invites themselves (from their own address), pass `issilent: true` and give them the interview links.
-3. **For a shareable link with no email list,** create one invite with `isuniversal: true` — no email required; anyone with the link can participate.
-4. **For internal testing,** pass `istest: true` so the dry-run interview is excluded from billing and analysis.
-5. **Rewards (BYOP only):** the study needs `is_offering_enabled: true` and an `incentive_amount` ($5–$400), set via `update_study`. `send_reward` with the `invite_id` pays a participant whose **latest call is rated Excellent or Good** — Fair, Poor, or not-yet-evaluated calls are not reward-eligible and the backend rejects them (400), so check the call's `success_evaluation` before sending. It is idempotent, so re-sending cannot double-pay. `auto_send_reward` applies the same Excellent/Good condition automatically. Only send rewards when the user explicitly asks.
+1. Call `get_study` and verify `recruiting_method` is `byop` and `provisioning_status` is `provisioned`.
+2. Return the complete current persisted study plan in a readable form with its audience, screeners, concepts, and interview settings. Obtain explicit approval of that exact version before creating participants; approval to create or customize the study does not count.
+3. Normalize and deduplicate email addresses case-insensitively. `create_participants` accepts 1–100 participants per request.
+4. Explain that invitations send by default. Use `silent: true` for each participant when the user wants records created without sending email.
+5. Call `create_participants` with `study_id` and the batch only after provisioning and exact-version plan approval are confirmed.
+6. Use `list_participants` to verify the batch. Call `get_participant` before `update_participant`.
+7. `send_participant_reward` has a financial side effect and is BYOP-only. Confirm the exact participant and require an explicit request before sending. The backend prevents a duplicate reward for an already-paid participant.
+8. Participant deletion is not available through the public MCP surface. Do not promise to delete a participant.

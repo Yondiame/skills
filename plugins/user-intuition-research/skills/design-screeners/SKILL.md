@@ -1,14 +1,15 @@
 ---
 name: design-screeners
-description: Use when the user wants to control who qualifies for an existing study — by role, behavior, demographics, or product usage. Triggers on "add screeners", "only interview people who X", "screen for Y", "filter participants".
+description: Use when the user wants to screen participants, define qualification criteria, or target a Panel study.
 ---
 
-When the user wants screeners on a study:
+When the user asks to change screening:
 
-1. **Read before writing.** Call `get_study` with `include: ['screener_questions']` — the default summary truncates option lists, and `update_study.screener_questions` REPLACES the full list. Writing back a truncated array silently destroys screeners.
-2. **Prefer PANEL questions for standard attributes.** Call `list_available_panel_questions` (a catalog of 180+ standard demographic/behavioral questions), then `get_panel_question` on candidates to see their answer options. Panel questions carry `is_panel_question: true` and a `qualification_id` — never invent a `qualification_id`.
-3. **Write CUSTOM questions only for study-specific criteria.** Close-ended, 3–5 options, and always at least one disqualifying option so the screener doesn't lead the witness.
-4. **Never add consent questions.** "Do you consent to being recorded?" and similar are handled outside screeners — adding one is a UX bug.
-5. **Show the full proposed screener list to the user before saving.** Over-tight screeners slow recruitment; each disqualification costs fielding time.
-6. **Call `update_study`** with the COMPLETE list — existing questions (both kinds) plus the new ones, ordered via the `order` field.
-7. **If the study will field a panel,** remind the user that the panel recruits against these screeners — geo targeting is set by `country_code` at panel launch, not by a screener question, so never add a country screener.
+1. Call `get_study` before writing. If a Panel study is fielding, ask whether to `pause_study` or `stop_study` before editing.
+2. Call `customize_study` with the user's audience or screening request in ordinary language. Do not create targeting IDs or screener schemas yourself.
+3. Let Customize Plan match standard criteria such as age or household income to canonical targeting attributes. It should use custom screeners only where appropriate.
+4. If it returns `response_type: "question"`, relay the question and send the user's answer back through `customize_study`. Never answer on their behalf.
+5. Never add recording-consent or willingness-to-participate questions. Do not add screening the user did not request.
+6. Call `get_study` and return the complete revised plan in a readable form together with persisted targeting, screeners, concepts, settings, and likely recruitment tradeoffs.
+7. Ask the user to approve that exact revised plan version. An approval given before the screening change no longer covers the study.
+8. If the study was paused and recruitment should continue, call `resume_study` only after the update is verified and the revised plan is approved.
