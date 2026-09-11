@@ -1,17 +1,13 @@
 ---
 name: analyze-completed-study
-description: Use when the user wants findings from a study's interviews — themes, quotes, a report. Triggers on "analyze my study", "what did we learn", "summarize the interviews", "generate the report".
+description: Use when the user wants findings, themes, evidence, or a report from completed User Intuition interviews.
 ---
 
-When the user wants analysis:
+When the user asks for analysis:
 
-1. **Identify the study.** Given a name, find it via `list_studies` with the `name` filter; disambiguate if multiple match.
-2. **Check there is enough signal.** `list_calls` with the `assistant_id`, filtered to `success_evaluation: ["Excellent", "Good"]`. If completed interviews are still trickling in, say so and offer to wait rather than analyzing a partial dataset.
-3. **Generate or fetch the report.** `get_study_report` returns the latest structured report; on 404, call `generate_report` (takes 30–120 seconds — it analyzes all completed transcripts) and then fetch.
-4. **Go deeper than the report where it matters.** For the 2–3 most load-bearing findings, pull supporting evidence with `get_call` — and pass `include: ["transcript"]` (or `view: "full"`): the default response returns only a ~6-turn transcript excerpt, which is not enough to quote from.
-5. **Summarize structurally:**
-   - Headline finding — one sentence the user could paste into a team channel.
-   - 3–5 themes, each with participant counts (how many of N raised it) and 1–2 verbatim quotes.
-   - Surprises or contradictions — call these out explicitly.
-6. **Never invent quotes.** Only surface text that appears in actual transcripts. If evidence is thin for a claim, say the evidence is thin.
-7. **Offer next steps:** a follow-up study on the biggest open question, or widening the interview pool if N is small.
+1. Identify the study with `list_studies`; disambiguate similar names. Call `get_study` for full context.
+2. Call `list_interviews` with the `study_id` and check whether enough completed, usable interviews exist. Say when evidence is still thin.
+3. Call `get_study_report`. If no report exists or it is stale and the user asked for fresh analysis, call `generate_report`, then fetch the report again.
+4. For load-bearing findings, call `get_interview` on the supporting interview IDs and verify evidence in the returned messages. Never invent quotes or attribute a claim to an interview you did not fetch.
+5. Summarize the headline, 3–5 themes, participant counts when supported, evidence, contradictions, and open questions.
+6. Distinguish direct evidence from inference. Offer a follow-up study when the biggest uncertainty cannot be answered from the current interviews.

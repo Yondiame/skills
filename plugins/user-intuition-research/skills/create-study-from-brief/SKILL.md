@@ -1,14 +1,16 @@
 ---
 name: create-study-from-brief
-description: Use when the user wants to create a new User Intuition interview study from a research brief, goal, or idea. Triggers on "create a study", "set up interviews about X", "I want to interview people about Y", "turn this brief into a study".
+description: Use when the user wants to create a User Intuition interview study from a brief, goal, problem, or research idea.
 ---
 
 When the user asks to create a study:
 
-1. **Call `list_study_types` FIRST** — always, before anything else. Pick the row matching the user's goal (Win/Loss, Churn, NPS+CSAT, Onboarding, Brand Health, etc.). If the user's goal is ambiguous between two types, ask. The catalog is lightweight — prompt fields are stripped — so after picking a row, **call `get_study_type` with the row's slug** to load its full `chat_prompt`.
-2. **Ask Panel vs BYOP.** `is_panel` is required and must come from the user: Panel (`is_panel=true`) recruits respondents from the User Intuition panel; BYOP (`is_panel=false`) means the user invites their own participants. Never guess.
-3. **Ask the mode** if unstated: voice (default — both flags false), chat (`enable_chat=true`), or video (`enable_video_recording=true`). Chat and video are mutually exclusive.
-4. **Draft the moderator guide** using the `chat_prompt` from the `get_study_type` response as your template — each study type's prompt structure is materially different. Show the draft to the user before creating.
-5. **Call `create_study`** with `name`, `is_panel`, `system_prompt`, `study_type: "standard"` (the literal string — never the row's slug), the catalog row's `id` as `study_id`, and the mode flags. **For voice and video studies, always build the complete `voice_config`** — English included: the backend only provisions the interviewer when both `system_prompt` and `voice_config` are present, so omitting it leaves an unprovisioned draft. Call `list_voices` and set `name` and `voiceId` BOTH to the chosen voice id plus `provider` from the same row, and `language` to an ISO code from `list_available_languages` (`"en"` for English). Never send a bare `{language}` object. Chat-only studies (`enable_chat: true`) don't need a `voice_config`.
-6. **Do NOT add `screener_questions` at creation** — only add them later (via the design-screeners flow) if the user explicitly asks. Never add consent or "willing to participate" questions.
-7. **Share the returned `dashboard_url`** — always. It takes the user straight to the study in the dashboard to review and launch.
+1. Ask Panel versus BYOP when unstated. Set `recruiting_method` to `panel` when User Intuition should recruit, or `byop` when the user supplies participants. Never guess.
+2. Keep the name to 40 characters. Unless the user requests an override, omit `interview_format`, `language`, and `voice` so `create_study` applies the current defaults: a voice interview in English with Elliot. If the user requests another mode or language, use `list_available_modes` or `list_available_languages` for discovery. The public voice override is `male` (Elliot) or `female` (Clara); provider-specific IDs from `list_voices` are not accepted. Never supply `voice` for chat.
+3. Use `list_study_types` only when the user needs help choosing a type. Do not draft a plan from its prompts; the backend applies the selected type's current Customize Plan instructions.
+4. Call `create_study` with ordinary metadata only.
+5. Call `customize_study` with the user's natural-language brief, including their audience, screening needs, and requested concept links or images. Do not construct a plan, targeting attributes, screeners, duration, or concept objects in the MCP host.
+6. If `response_type` is `question`, relay the question to the user and call `customize_study` again with their answer. Never decide for them.
+7. When customization completes, call `get_study`. Return the complete persisted study plan in a readable form together with its audience, screeners, concepts, interview settings, and `provisioning_status`. Do not replace it with a summary or dashboard link.
+8. Ask the user to approve that exact plan version or request revisions. Send revisions through `customize_study`, fetch the study again, and repeat the complete review. Approval of an earlier version does not cover a revised plan.
+9. Verify `provisioning_status` is `provisioned` before fielding. Return the study ID and, when present, both `dashboard_url` and `study_link`; label `study_link` as the live participant interview link, not a preview. Never create BYOP participants or launch a paid Panel without current-plan approval. Panel launch also requires a dry-run and separate approval of its complete estimate.

@@ -12,7 +12,7 @@
     {
       "name": "user-intuition-research",
       "source": "./plugins/user-intuition-research",
-      "description": "Run customer research with AI agents: create interview studies, design screeners, field panels, analyze transcripts. Requires the User Intuition MCP server.",
+      "description": "Run customer research with AI agents: create interview studies, design screeners, field panels, and analyze transcripts using the bundled User Intuition MCP server.",
       "author": {
         "name": "User Intuition",
         "url": "https://www.userintuition.ai"

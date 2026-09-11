@@ -2,7 +2,7 @@
 
 Pre-built [Claude Code](https://claude.com/claude-code) skills for running customer research with [User Intuition](https://www.userintuition.ai) — create interview studies, design screeners, field panel recruits, and turn transcripts into stakeholder-ready findings.
 
-Where the [User Intuition MCP server](https://docs.userintuition.ai/mcp-server/overview) gives your agent the *tools*, these skills give it the *play*: the workflow, the guardrails, and the order of operations that make research runs reproducible.
+The plugin bundles the hosted [User Intuition MCP server](https://docs.userintuition.ai/mcp-server/overview) for the *tools* and the skills for the *play*: the workflow, guardrails, and order of operations that make research runs reproducible.
 
 ## Install
 
@@ -19,12 +19,20 @@ Each skill is a standalone Markdown file under `plugins/user-intuition-research/
 
 > Fetch https://docs.userintuition.ai/skills/library.md and install each skill as `~/.claude/skills/<name>/SKILL.md` — one directory per skill
 
-## Prerequisites
+## Connect your account
 
-The skills drive the User Intuition MCP server — connect it first ([quickstart](https://docs.userintuition.ai/mcp-server/quickstart)):
+The Claude plugin includes the hosted MCP connection:
+
+```text
+https://mcp.userintuition.ai/mcp
+```
+
+After installing the plugin, open `/mcp`, select `user-intuition`, and complete the browser-based OAuth flow. Claude stores and refreshes the resulting token securely.
+
+If you prefer a local stdio connection instead of the bundled hosted connection, disable the plugin-provided MCP and use:
 
 ```bash
-claude mcp add userintuition -- npx -y @userintuition-ai/mcp
+claude mcp add userintuition -- npx -y @userintuition-ai/mcp@latest
 ```
 
 with `USERINTUITION_API_KEY` set (get a key from your [dashboard](https://app.userintuition.ai)).
@@ -40,9 +48,9 @@ with `USERINTUITION_API_KEY` set (get a key from your [dashboard](https://app.us
 | `run-a-concept-test` | Put a concept, prototype, or landing page in front of participants |
 | `monitor-fielding` | Daily digest of every fielding study — progress, quality, stalls |
 | `analyze-completed-study` | From transcripts to stakeholder-ready findings, with real quotes only |
-| `curate-interview-quality` | Keep low-quality interviews out of your analysis — reversibly |
+| `curate-interview-quality` | Review low-quality interviews and delete only the exact interviews the user confirms |
 
-Every tool name and argument is verified against the published `@userintuition-ai/mcp` package. Check any tool yourself:
+The plugin workflows target the 33-tool `@userintuition-ai/mcp` v0.8.6 surface. Check any tool yourself:
 
 ```bash
 npx -y @userintuition-ai/mcp describe create_study
