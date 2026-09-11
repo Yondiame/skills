@@ -2,7 +2,7 @@
 
 Pre-built [Claude Code](https://claude.com/claude-code) skills for running customer research with [User Intuition](https://www.userintuition.ai) — create interview studies, design screeners, field panel recruits, and turn transcripts into stakeholder-ready findings.
 
-Where the [User Intuition MCP server](https://docs.userintuition.ai/mcp-server/overview) gives your agent the *tools*, these skills give it the *play*: the workflow, the guardrails, and the order of operations that make research runs reproducible.
+The plugin bundles the hosted [User Intuition MCP server](https://docs.userintuition.ai/mcp-server/overview) for the *tools* and the skills for the *play*: the workflow, guardrails, and order of operations that make research runs reproducible.
 
 ## Install
 
@@ -19,15 +19,17 @@ Each skill is a standalone Markdown file under `plugins/user-intuition-research/
 
 > Fetch https://docs.userintuition.ai/skills/library.md and install each skill as `~/.claude/skills/<name>/SKILL.md` — one directory per skill
 
-## Prerequisites
+## Connect your account
 
-The skills drive the User Intuition MCP server — connect it first ([quickstart](https://docs.userintuition.ai/mcp-server/quickstart)). OAuth-capable clients should use the hosted endpoint:
+The Claude plugin includes the hosted MCP connection:
 
 ```text
 https://mcp.userintuition.ai/mcp
 ```
 
-For local stdio clients such as Claude Code, use:
+After installing the plugin, open `/mcp`, select `user-intuition`, and complete the browser-based OAuth flow. Claude stores and refreshes the resulting token securely.
+
+If you prefer a local stdio connection instead of the bundled hosted connection, disable the plugin-provided MCP and use:
 
 ```bash
 claude mcp add userintuition -- npx -y @userintuition-ai/mcp@latest
