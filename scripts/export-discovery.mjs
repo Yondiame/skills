@@ -6,12 +6,14 @@ import { execFileSync } from 'node:child_process';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const args=process.argv.slice(2);
 const option=name=>{const i=args.indexOf(name);if(i<0)return null;if(!args[i+1]||args[i+1].startsWith('--'))throw Error(`Missing ${name}`);return resolve(args[i+1]);};
+const metadata=JSON.parse(readFileSync(join(root,'skill-metadata.json'),'utf8'));
 const entries=readdirSync(join(root,'plugins/user-intuition-research/skills')).sort().map(name=>{
  const path=`plugins/user-intuition-research/skills/${name}/SKILL.md`;
  const body=readFileSync(join(root,path),'utf8');
  const match=body.match(/^---\nname: ([^\n]+)\ndescription: ([^\n]+)\n---\n/);
  if(!match||match[1]!==name)throw Error(`Invalid frontmatter: ${name}`);
- const tools=[...new Set([...body.matchAll(/`((?:get|list|create|customize|launch|submit|pause|resume|stop|update|send|delete|generate)_[a-z_]+)`/g)].map(m=>m[1]))];
+ const tools=metadata[name]?.primaryTools;
+ if(!Array.isArray(tools))throw Error(`Missing tool metadata: ${name}`);
  return {name,description:match[2],path,body,tools,sha256:createHash('sha256').update(body).digest('hex')};
 });
 const catalog={repository:'https://github.com/user-intuition/skills',skills:entries.map(({body,path,...e})=>({...e,url:`https://raw.githubusercontent.com/user-intuition/skills/main/${path}`,documentation:`https://docs.userintuition.ai/skills/${e.name}`}))};

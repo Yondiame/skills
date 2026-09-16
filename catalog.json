@@ -5,11 +5,8 @@
       "name": "analyze-completed-study",
       "description": "Use when the user wants findings, themes, evidence, or a report from completed User Intuition interviews.",
       "tools": [
-        "list_studies",
-        "get_study",
-        "list_interviews",
-        "get_study_report",
         "generate_report",
+        "get_study_report",
         "get_interview"
       ],
       "sha256": "f1a74aab8554faf74876d431ef9d1680e947c101ec2649d28f5d3a862d01bcb2",
@@ -21,10 +18,6 @@
       "description": "Use when the user wants to create a User Intuition interview study from a brief, goal, problem, or research idea.",
       "tools": [
         "create_study",
-        "list_available_modes",
-        "list_available_languages",
-        "list_voices",
-        "list_study_types",
         "customize_study",
         "get_study"
       ],
@@ -38,7 +31,6 @@
       "tools": [
         "list_interviews",
         "get_interview",
-        "update_interview",
         "delete_interview"
       ],
       "sha256": "59f144bc98e2ce6fa3b6228c70cac46b8781c7cf07d3392a11a4c0a99986abc5",
@@ -49,11 +41,8 @@
       "name": "design-screeners",
       "description": "Use when the user wants to screen participants, define qualification criteria, or target a Panel study.",
       "tools": [
-        "get_study",
-        "pause_study",
-        "stop_study",
         "customize_study",
-        "resume_study"
+        "get_study"
       ],
       "sha256": "1d7fbd508085300abc9c7ad749b0eef38fad3b6a12f3983bf539efa31ee231fa",
       "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/design-screeners/SKILL.md",
@@ -65,9 +54,8 @@
       "tools": [
         "get_study",
         "list_panel_countries",
-        "customize_study",
-        "submit_feasibility_request",
         "launch_panel",
+        "submit_feasibility_request",
         "pause_study",
         "resume_study",
         "stop_study"
@@ -96,10 +84,7 @@
       "description": "Use when the user wants a read-only status snapshot of User Intuition studies or interviews.",
       "tools": [
         "list_studies",
-        "list_interviews",
-        "pause_study",
-        "resume_study",
-        "stop_study"
+        "list_interviews"
       ],
       "sha256": "aee0363c6d8e038e9c3832ca3b7c84ce4a1d918ef02b94f9231c3e1cb12f643d",
       "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/monitor-fielding/SKILL.md",
@@ -112,7 +97,6 @@
         "list_studies",
         "get_study",
         "get_study_report",
-        "generate_report",
         "get_interview"
       ],
       "sha256": "67107d499a33eb1cfd054a02271cd4945c2e4904e3e9d42ce803c86e0dd68675",
@@ -123,6 +107,7 @@
       "name": "run-a-concept-test",
       "description": "Use when the user wants participants to react to a concept, prototype, design, or landing page during a User Intuition interview.",
       "tools": [
+        "create_study",
         "customize_study",
         "get_study"
       ],

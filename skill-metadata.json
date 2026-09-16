@@ -1,0 +1,74 @@
+{
+  "create-study-from-brief": {
+    "primaryTools": [
+      "create_study",
+      "customize_study",
+      "get_study"
+    ]
+  },
+  "design-screeners": {
+    "primaryTools": [
+      "customize_study",
+      "get_study"
+    ]
+  },
+  "field-a-panel": {
+    "primaryTools": [
+      "get_study",
+      "list_panel_countries",
+      "launch_panel",
+      "submit_feasibility_request",
+      "pause_study",
+      "resume_study",
+      "stop_study"
+    ]
+  },
+  "invite-your-own-participants": {
+    "primaryTools": [
+      "get_study",
+      "create_participants",
+      "list_participants",
+      "get_participant",
+      "update_participant",
+      "send_participant_reward"
+    ]
+  },
+  "run-a-concept-test": {
+    "primaryTools": [
+      "create_study",
+      "customize_study",
+      "get_study"
+    ]
+  },
+  "monitor-fielding": {
+    "primaryTools": [
+      "list_studies",
+      "list_interviews"
+    ]
+  },
+  "analyze-completed-study": {
+    "primaryTools": [
+      "generate_report",
+      "get_study_report",
+      "get_interview"
+    ]
+  },
+  "curate-interview-quality": {
+    "primaryTools": [
+      "list_interviews",
+      "get_interview",
+      "delete_interview"
+    ]
+  },
+  "retrieve-study-results": {
+    "primaryTools": [
+      "list_studies",
+      "get_study",
+      "get_study_report",
+      "get_interview"
+    ]
+  },
+  "search-research": {
+    "primaryTools": []
+  }
+}
