@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node scripts/check-skills.mjs"
+    "test": "node scripts/check-skills.mjs && node scripts/export-discovery.mjs --check",
+    "catalog": "node scripts/export-discovery.mjs"
   }
 }

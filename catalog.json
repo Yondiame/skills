@@ -1,0 +1,75 @@
+{
+  "repository": "https://github.com/user-intuition/skills",
+  "skills": [
+    {
+      "name": "analyze-completed-study",
+      "description": "Use when the user wants findings, themes, evidence, or a report from completed User Intuition interviews.",
+      "sha256": "f1a74aab8554faf74876d431ef9d1680e947c101ec2649d28f5d3a862d01bcb2",
+      "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/analyze-completed-study/SKILL.md",
+      "documentation": "https://docs.userintuition.ai/skills/analyze-completed-study"
+    },
+    {
+      "name": "create-study-from-brief",
+      "description": "Use when the user wants to create a User Intuition interview study from a brief, goal, problem, or research idea.",
+      "sha256": "b5030ecba240ae70b030ee9792afcbfc23df6917f06905ee0da729152bc3e75d",
+      "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/create-study-from-brief/SKILL.md",
+      "documentation": "https://docs.userintuition.ai/skills/create-study-from-brief"
+    },
+    {
+      "name": "curate-interview-quality",
+      "description": "Use when the user wants to review interview quality or explicitly delete unusable interviews from one User Intuition study.",
+      "sha256": "59f144bc98e2ce6fa3b6228c70cac46b8781c7cf07d3392a11a4c0a99986abc5",
+      "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/curate-interview-quality/SKILL.md",
+      "documentation": "https://docs.userintuition.ai/skills/curate-interview-quality"
+    },
+    {
+      "name": "design-screeners",
+      "description": "Use when the user wants to screen participants, define qualification criteria, or target a Panel study.",
+      "sha256": "1d7fbd508085300abc9c7ad749b0eef38fad3b6a12f3983bf539efa31ee231fa",
+      "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/design-screeners/SKILL.md",
+      "documentation": "https://docs.userintuition.ai/skills/design-screeners"
+    },
+    {
+      "name": "field-a-panel",
+      "description": "Use when the user wants to estimate, launch, pause, resume, or stop recruitment for a User Intuition Panel study.",
+      "sha256": "44f3cce7bfae4b35fd5cad3a3625f4c72b1b81f83a2d9903d902e164e0d0faf2",
+      "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/field-a-panel/SKILL.md",
+      "documentation": "https://docs.userintuition.ai/skills/field-a-panel"
+    },
+    {
+      "name": "invite-your-own-participants",
+      "description": "Use when the user wants to add, invite, update, or reward their own participants in a BYOP study.",
+      "sha256": "6dfa57b12e1f9d5a8a61326e2e83496ee4c10e5b23dea1f3a26615d64ff1d21c",
+      "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/invite-your-own-participants/SKILL.md",
+      "documentation": "https://docs.userintuition.ai/skills/invite-your-own-participants"
+    },
+    {
+      "name": "monitor-fielding",
+      "description": "Use when the user wants a read-only status snapshot of User Intuition studies or interviews.",
+      "sha256": "aee0363c6d8e038e9c3832ca3b7c84ce4a1d918ef02b94f9231c3e1cb12f643d",
+      "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/monitor-fielding/SKILL.md",
+      "documentation": "https://docs.userintuition.ai/skills/monitor-fielding"
+    },
+    {
+      "name": "retrieve-study-results",
+      "description": "Use when the user wants to fetch an existing User Intuition study report, inspect its four sections, or follow a finding or participant response to supporting interview evidence without regenerating analysis.",
+      "sha256": "67107d499a33eb1cfd054a02271cd4945c2e4904e3e9d42ce803c86e0dd68675",
+      "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/retrieve-study-results/SKILL.md",
+      "documentation": "https://docs.userintuition.ai/skills/retrieve-study-results"
+    },
+    {
+      "name": "run-a-concept-test",
+      "description": "Use when the user wants participants to react to a concept, prototype, design, or landing page during a User Intuition interview.",
+      "sha256": "44ba137385a1f6414b02e98b84f85cead85d41be0526c63776222c248e892065",
+      "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/run-a-concept-test/SKILL.md",
+      "documentation": "https://docs.userintuition.ai/skills/run-a-concept-test"
+    },
+    {
+      "name": "search-research",
+      "description": "Use when the user wants to find existing User Intuition findings or participant responses across authorized studies before deciding whether more qualitative research is needed.",
+      "sha256": "ff65c725f678761336b3b8c7e550ee05b05361e421f072eb58c7fbc5cd59a765",
+      "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/search-research/SKILL.md",
+      "documentation": "https://docs.userintuition.ai/skills/search-research"
+    }
+  ]
+}
