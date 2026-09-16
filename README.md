@@ -49,7 +49,6 @@ with `USERINTUITION_API_KEY` set (get a key from your [dashboard](https://app.us
 | `monitor-fielding` | Daily digest of every fielding study — progress, quality, stalls |
 | `analyze-completed-study` | From transcripts to stakeholder-ready findings, with real quotes only |
 | `curate-interview-quality` | Review low-quality interviews and delete only the exact interviews the user confirms |
-
 | `retrieve-study-results` | Read an existing report and follow source references without regeneration |
 | `search-research` | Find authorized prior evidence and inspect coverage and sources |
 
