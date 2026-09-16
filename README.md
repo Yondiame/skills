@@ -1,6 +1,6 @@
 # User Intuition Skills
 
-Pre-built [Claude Code](https://claude.com/claude-code) skills for running customer research with [User Intuition](https://www.userintuition.ai) — create interview studies, design screeners, field panel recruits, and turn transcripts into stakeholder-ready findings.
+Agent Skills for running customer research with [User Intuition](https://www.userintuition.ai) — create interview studies, design screeners, field panel recruits, and turn transcripts into stakeholder-ready findings.
 
 The plugin bundles the hosted [User Intuition MCP server](https://docs.userintuition.ai/mcp-server/overview) for the *tools* and the skills for the *play*: the workflow, guardrails, and order of operations that make research runs reproducible.
 
@@ -17,7 +17,7 @@ The plugin bundles the hosted [User Intuition MCP server](https://docs.userintui
 
 Each skill is a standalone Markdown file under `plugins/user-intuition-research/skills/<name>/SKILL.md`. Claude Code discovers skills as one directory per skill — copy any of them to `~/.claude/skills/<name>/SKILL.md` — or tell your agent:
 
-> Fetch https://docs.userintuition.ai/skills/library.md and install each skill as `~/.claude/skills/<name>/SKILL.md` — one directory per skill
+> Fetch https://raw.githubusercontent.com/user-intuition/skills/main/catalog.json, select the workflow needed for the task, and fetch its raw `SKILL.md`. Install it in the skill directory supported by your agent client.
 
 ## Connect your account
 
@@ -50,11 +50,28 @@ with `USERINTUITION_API_KEY` set (get a key from your [dashboard](https://app.us
 | `analyze-completed-study` | From transcripts to stakeholder-ready findings, with real quotes only |
 | `curate-interview-quality` | Review low-quality interviews and delete only the exact interviews the user confirms |
 
-The plugin workflows target the 33-tool `@userintuition-ai/mcp` v0.8.6 surface. Check any tool yourself:
+| `retrieve-study-results` | Read an existing report and follow source references without regeneration |
+| `search-research` | Find authorized prior evidence and inspect coverage and sources |
+
+The original eight workflows retain their validated MCP behavior. Retrieval and search use current tool/schema discovery; illustrative B2/C1 adapters still require release verification. Check any named tool yourself:
 
 ```bash
 npx -y @userintuition-ai/mcp describe create_study
 ```
+
+## Machine discovery
+
+[Catalog](https://raw.githubusercontent.com/user-intuition/skills/main/catalog.json): names, descriptions, raw file URLs, documentation URLs, and SHA-256 digests. Each skill is independently fetchable; loading the catalog does not require loading every workflow.
+
+## Maintaining docs and discovery
+
+The skill files in this repository are canonical. After editing, run `npm run catalog`, then `npm test`. Commit the source before exporting pinned docs and website discovery:
+
+```sh
+node scripts/export-discovery.mjs --docs /path/to/userintuition-docs --website /path/to/ui-astro
+```
+
+The exporter generates individual documentation pages, the library index, a source manifest, and website discovery entries. It preserves the existing umbrella skill. Do not independently edit generated pages.
 
 ## Docs
 

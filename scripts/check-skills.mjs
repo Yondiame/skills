@@ -13,7 +13,9 @@ const expectedSkills = [
   'field-a-panel',
   'invite-your-own-participants',
   'monitor-fielding',
+  'retrieve-study-results',
   'run-a-concept-test',
+  'search-research',
 ];
 
 const removedReferences = [
@@ -95,4 +97,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('Skills validation OK: v0.8.6 workflows and safety gates are present.');
+console.log('Skills validation OK: 10 workflows and required safeguards are present.');
