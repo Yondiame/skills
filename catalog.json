@@ -9,7 +9,7 @@
         "get_study_report",
         "get_interview"
       ],
-      "sha256": "f1a74aab8554faf74876d431ef9d1680e947c101ec2649d28f5d3a862d01bcb2",
+      "sha256": "204d6b58c061787dfaf7df35d9141b3a4eae916e108652e21669b2ef2e9069b2",
       "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/analyze-completed-study/SKILL.md",
       "documentation": "https://docs.userintuition.ai/skills/analyze-completed-study"
     },
@@ -21,7 +21,7 @@
         "customize_study",
         "get_study"
       ],
-      "sha256": "b5030ecba240ae70b030ee9792afcbfc23df6917f06905ee0da729152bc3e75d",
+      "sha256": "d607685f0bb526da78b6a8ae746f5ea1e8a142bc4803ca48f45ff9e57072f2f8",
       "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/create-study-from-brief/SKILL.md",
       "documentation": "https://docs.userintuition.ai/skills/create-study-from-brief"
     },
@@ -92,14 +92,14 @@
     },
     {
       "name": "retrieve-study-results",
-      "description": "Use when the user wants to fetch an existing User Intuition study report, inspect its four sections, or follow a finding or participant response to supporting interview evidence without regenerating analysis.",
+      "description": "Use when the user wants to fetch an existing User Intuition study report, inspect its evidence coverage, or follow a finding or participant response to supporting interview evidence without regenerating analysis.",
       "tools": [
         "list_studies",
         "get_study",
         "get_study_report",
         "get_interview"
       ],
-      "sha256": "67107d499a33eb1cfd054a02271cd4945c2e4904e3e9d42ce803c86e0dd68675",
+      "sha256": "2600ade18888cc48fe06ed4c3b986336e3f936d932a3891960c9ee4cc48c800a",
       "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/retrieve-study-results/SKILL.md",
       "documentation": "https://docs.userintuition.ai/skills/retrieve-study-results"
     },
