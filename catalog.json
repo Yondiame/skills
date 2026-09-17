@@ -123,7 +123,7 @@
         "get_study_report",
         "get_interview"
       ],
-      "sha256": "f0d2e21e4cc02cc6692f3f078689df7d2baa69defba85fc2cd360a6b53ade9eb",
+      "sha256": "4e9bc0f00e6b7a3613803e6f3370c25a8b4c4a7f3c9da628f6fd57c3e12c19f1",
       "url": "https://raw.githubusercontent.com/user-intuition/skills/main/plugins/user-intuition-research/skills/search-research/SKILL.md",
       "documentation": "https://docs.userintuition.ai/skills/search-research"
     }
